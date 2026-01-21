@@ -53,4 +53,13 @@ public class Student {
         }
         return sum / grades.size();
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id='" + id + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", grades=" + grades +
+                '}';
+    }
 }

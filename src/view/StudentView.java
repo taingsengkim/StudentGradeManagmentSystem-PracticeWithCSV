@@ -43,19 +43,21 @@ public class StudentView {
                         String id = InputUtil.getText("Enter Student Id : ");
                         Student student =studentControllerImpl.findStudentById(id);
                         if(student != null){
-                            String subject = InputUtil.getText("Enter Subject : ");
-                          try {
 
-                              if(student.getGrades().isEmpty()){
+                            String subject = InputUtil.getText("Enter Subject : ");
+
+                          try {
+                              System.out.println("Debug : " + student);
+                              if(student.getGrades().get(subject)==null){
                                   Double score = InputUtil.getDouble("Enter Score : ");
                                   studentControllerImpl.addGrade(id,subject,score);
                                   ViewUtil.printHeader("Score Added Successfully!");
                                   break;
                               }else {
-                                  ViewUtil.printHeader("You already assign score to this Subject. Do you want to Update ? [Y/N]  ");
                                   for (Grade s : student.getGrades().values()) {
-                                      ViewUtil.printHeader("Your Current Score : " + s.getScore());
+                                      if(s.getSubject().equals(subject)) ViewUtil.printHeader("Your Current Score : " + s.getScore());
                                   }
+                                  ViewUtil.printHeader("You already assign score to this Subject. Do you want to Update ? [Y/N]  ");
                                   String optU = InputUtil.getText("Enter Option : ");
                                   if(optU.equals("y")){
                                       Double score = InputUtil.getDouble("Enter Score : ");

@@ -23,4 +23,12 @@ public class Grade {
     public Double getScore(){
         return this.score;
     }
+
+    @Override
+    public String toString() {
+        return "Grade{" +
+                "subject='" + subject + '\'' +
+                ", score=" + score +
+                '}';
+    }
 }
