@@ -85,6 +85,7 @@ public class StudentView {
                         Student student = studentControllerImpl.findStudentById(id);
                         if(student!= null){
                             ViewUtil.printStudentDetail(student);
+                            studentControllerImpl.showStudentStatistics(id);
                         }else {
                             ViewUtil.printHeader("Student Not Exist!");
                         }
@@ -106,7 +107,7 @@ public class StudentView {
                 }
                 case "6":{
                     ViewUtil.printHeader("Display Class Statistics");
-                    studentControllerImpl.showStudentStatistics();
+                    studentControllerImpl.showAllStudentStatistics();
                     ViewUtil.printStudentListDetail(studentControllerImpl.findAll());
                     break;
                 }

@@ -3,6 +3,7 @@ package controller;
 import model.Grade;
 import model.Student;
 import repository.StudentRepository;
+import util.ViewUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -66,7 +67,7 @@ public class StudentControllerImpl implements StudentController {
         return top;
     }
     @Override
-    public void showStudentStatistics(){
+    public void showAllStudentStatistics(){
             if (repository.findAll().isEmpty()) {
                 System.out.println("No students available.");
                 return;
@@ -81,6 +82,15 @@ public class StudentControllerImpl implements StudentController {
             System.out.println("Total Students: " + repository.findAll().size());
             System.out.println("Highest Average: " + highest);
             System.out.println("Lowest Average: " + lowest);
+    }
+
+    @Override
+    public void showStudentStatistics(String id) {
+        Student student = findStudentById(id);
+        if (student ==  null) {
+            return;
+        }
+        ViewUtil.printHeader("Average : " + student.getAverage());
     }
 
     @Override

@@ -14,6 +14,7 @@ public interface StudentController {
     Map<String,Student> findAll();
     Student findStudentById(String id);
     Student findTopPerformer(String subject);
-    void showStudentStatistics();
+    void showAllStudentStatistics();
+    void showStudentStatistics(String id);
     public Map<String,Student> listBelowAverage(double pass);
 }
