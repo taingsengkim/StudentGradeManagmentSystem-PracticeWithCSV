@@ -59,7 +59,7 @@ public class StudentControllerImpl implements StudentController {
 
         for (Student s : repository.findAll().values()) {
             Grade g = s.getGrades().get(subject);
-            if (g != null && g.getScore() > max) {
+            if (g != null && g.getScore() > max && g.getSubject().equals(subject)) {
                 max = g.getScore();
                 top = s;
             }

@@ -65,6 +65,23 @@ public class ViewUtil {
         print(table.render(), true);
     }
 
+    public static void printStudentListBelowAvg(Map<String,Student> s) {
+        Table table = new Table(3, BorderStyle.UNICODE_ROUND_BOX_WIDE);
+        table.addCell("ID");
+        table.addCell("Name");
+        table.addCell("Average");
+
+        for (Student student : s.values()){
+            table.addCell(student.getId());
+            table.addCell(student.getFullName());
+            table.addCell(String.valueOf(student.getAverage()) );
+        }
+        print(table.render(), true);
+    }
+
+
+
+
     public static void printStudentListDetail(Map<String,Student> s) {
         Table table = new Table(4, BorderStyle.UNICODE_ROUND_BOX_WIDE);
         table.addCell("ID");
@@ -113,5 +130,26 @@ public class ViewUtil {
         }
         print(table.render(), true);
     }
+
+    public static void printTopStudentSpecificSubject(Student student,String subject) {
+        Table table = new Table(4, BorderStyle.UNICODE_ROUND_BOX_WIDE);
+        table.addCell("ID");
+        table.addCell("Name");
+        table.addCell("Subject");
+        table.addCell("Score");
+
+
+            for (Grade g : student.getGrades().values()) {
+               if(g.getSubject().equals(subject)){
+                   table.addCell(student.getId());
+                   table.addCell(student.getFullName());
+                   table.addCell(g.getSubject());
+                   table.addCell(String.valueOf(g.getScore()));
+               }
+            }
+
+        print(table.render(), true);
+    }
+
 
 }

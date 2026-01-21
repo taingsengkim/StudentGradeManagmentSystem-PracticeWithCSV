@@ -99,7 +99,7 @@ public class StudentView {
                     String subject = InputUtil.getText("Enter Subjcet :  ");
                     Student student = studentControllerImpl.findTopPerformer(subject);
                     if(student!=null){
-                        ViewUtil.printStudentDetail(student);
+                        ViewUtil.printTopStudentSpecificSubject(student,subject);
                     }else {
                         ViewUtil.printHeader("Subject Not Exist!");
                     }
@@ -114,7 +114,7 @@ public class StudentView {
                 case "7":{
                     ViewUtil.printHeader("Student With Below Avg Score ( Below 50 )");
                     Map<String,Student> studentMap = studentControllerImpl.listBelowAverage(50);
-                    ViewUtil.printStudentListDetail(studentMap);
+                    ViewUtil.printStudentListBelowAvg(studentMap);
                     break;
                 }
                 case "0" : return;
